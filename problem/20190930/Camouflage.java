@@ -1,3 +1,8 @@
+package level2;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Camouflage {
 
 	public static void main(String[] args) {
@@ -13,14 +18,71 @@ public class Camouflage {
 	
 	
     public static int solution(String[][] clothes) {
-    	int answer= 0;
+    	int clothesCount = 1;
     	
-        return answer= -1;
+    	//¿Ê Á¾·ù¿Í °¹¼ö ±¸ÇÏ±â
+    	HashMap<String, Integer> clothAndCount = new HashMap<String, Integer>();
+    	for (int i = 0; i < clothes.length; i++) {
+    		if(clothAndCount.containsKey(clothes[i][1])) {
+    			clothAndCount.put(clothes[i][1], clothAndCount.get(clothes[i][1]) +1);
+    		}else {
+    			clothAndCount.put(clothes[i][1], 1);
+    		}
+		}
+    	
+    		
+		for (Map.Entry<String, Integer> entry : clothAndCount.entrySet()) {
+			clothesCount *= (entry.getValue()+1);
+		}
+    	
+		//¾Æ¹«°Íµµ ¾ÈÀÔÀº °æ¿ì Á¦¿Ü
+        return clothesCount -1;
     }
 }
 
 
 /*
- * ë¬¸ì œ : https://programmers.co.kr/learn/courses/30/lessons/42578
- * ìœ„ì¥ level 2
+ * ¹®Á¦ : https://programmers.co.kr/learn/courses/30/lessons/42578
+ * À§Àå level 2
+ * 
+ * Ç®ÀÌ
+ * step1 °¢ ÀÇ»ó Á¾·ù¿Í ±× ÀÇ»óÀÇ °¹¼ö¸¦ ±¸ÇÑ´Ù.
+ * step2 (°¢ ÀÇ»ó °¹¼ö +1)*(°¢ ÀÇ»ó °¹¼ö +1) ...
+ * step3 ¾Æ¹«°Íµµ ÀÔÁö ¾ÊÀº °æ¿ì°¡ ÀÖ±â ¶§¹®¿¡ -1 ÇØÁØ´Ù
+ * 
+ * ¿¹¸¦ µé¾î ¸Ó¸®3 ¾ó±¼ 2, »óÀÇ1 ÀÎ °æ¿ì ÃÑ °¡´ÉÇÑ °¹¼ö´Â
+ * (3+1)*(2+1)*(1+1) -1= 13ÀÌ´Ù.
+ * °¢ ÀÇ»ó ¼ö¿¡ +1 À» ÇØÁØ °ÍÀº Âø¿ëÇÏÁö ¾ÊÀº °æ¿ì°¡ Ãß°¡ µÈ°ÍÀÌ°í
+ * ¸Ç ¸¶Áö¸·¿¡ -1 ÇÑ °ÍÀº ¸ğµç ºÎÀ§ÀÇ ¿ÊÀ» ÀÔÁö ¾ÊÀº °æ¿ì¸¦ »« °ÍÀÌ´Ù.
+ * 
+ * 
+ * Ã¤Á¡ °á°ú
+Å×½ºÆ® 1 ¡µ	Åë°ú (0.84ms, 52.2MB)
+Å×½ºÆ® 2 ¡µ	Åë°ú (0.88ms, 52.3MB)
+Å×½ºÆ® 3 ¡µ	Åë°ú (0.83ms, 50.9MB)
+Å×½ºÆ® 4 ¡µ	Åë°ú (0.87ms, 52.3MB)
+Å×½ºÆ® 5 ¡µ	Åë°ú (0.85ms, 52.4MB)
+Å×½ºÆ® 6 ¡µ	Åë°ú (0.76ms, 50.8MB)
+Å×½ºÆ® 7 ¡µ	Åë°ú (0.90ms, 52.9MB)
+Å×½ºÆ® 8 ¡µ	Åë°ú (0.85ms, 52.5MB)
+Å×½ºÆ® 9 ¡µ	Åë°ú (0.78ms, 52.2MB)
+Å×½ºÆ® 10 ¡µ	Åë°ú (0.85ms, 52MB)
+Å×½ºÆ® 11 ¡µ	Åë°ú (0.84ms, 52.3MB)
+Å×½ºÆ® 12 ¡µ	Åë°ú (0.85ms, 52.8MB)
+Å×½ºÆ® 13 ¡µ	Åë°ú (0.59ms, 52.3MB)
+Å×½ºÆ® 14 ¡µ	Åë°ú (0.78ms, 52.1MB)
+Å×½ºÆ® 15 ¡µ	Åë°ú (0.79ms, 52.8MB)
+Å×½ºÆ® 16 ¡µ	Åë°ú (0.85ms, 50.4MB)
+Å×½ºÆ® 17 ¡µ	Åë°ú (0.85ms, 52.4MB)
+Å×½ºÆ® 18 ¡µ	Åë°ú (0.89ms, 52.4MB)
+Å×½ºÆ® 19 ¡µ	Åë°ú (0.81ms, 52.5MB)
+Å×½ºÆ® 20 ¡µ	Åë°ú (0.87ms, 52.8MB)
+Å×½ºÆ® 21 ¡µ	Åë°ú (0.90ms, 50.7MB)
+Å×½ºÆ® 22 ¡µ	Åë°ú (0.71ms, 50.5MB)
+Å×½ºÆ® 23 ¡µ	Åë°ú (0.90ms, 50.8MB)
+Å×½ºÆ® 24 ¡µ	Åë°ú (0.91ms, 50.1MB)
+Å×½ºÆ® 25 ¡µ	Åë°ú (0.92ms, 52.1MB)
+Å×½ºÆ® 26 ¡µ	Åë°ú (0.90ms, 53.4MB)
+Å×½ºÆ® 27 ¡µ	Åë°ú (0.78ms, 52.1MB)
+Å×½ºÆ® 28 ¡µ	Åë°ú (0.87ms, 52.4MB)
  * */
