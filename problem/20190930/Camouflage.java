@@ -1,26 +1,48 @@
-public class Camouflage {
+import java.util.HashMap;
+import java.util.Iterator;
+
+
+public class Camouflage_juhee {
 
 	public static void main(String[] args) {
-		solution(new String[][] {{"yellow_hat", "headgear"}, 
+		int result = solution(new String[][] {{"yellow_hat", "headgear"}, 
 								{"blue_sunglasses", "eyewear"}, 
 								{"green_turban", "headgear"}});
+		System.out.println(result);
 		
 		solution(new String[][] {{"crow_mask", "face"}, 
 								{"blue_sunglasses", "face"}, 
 								{"smoky_makeup", "face"}});
 
-	}
+		}
 	
 	
     public static int solution(String[][] clothes) {
-    	int answer= 0;
     	
-        return answer= -1;
+    	int answer = 1;
+        HashMap<String, Integer> map = new HashMap<>();
+        for(int i=0; i<clothes.length; i++){
+            String key = clothes[i][1];
+            if(!map.containsKey(key)) {
+                //¿ÊÁ¾·ùÀÇ °³¼ö°¡ ÇÏ³ªµµ ¾øÀ» °æ¿ì
+                map.put(key, 1);
+            } else {
+                //ÀÖÀ¸¸é ¿ÊÀÌ ÀÖÀ»¶§¸¶´Ù Ãß°¡
+                map.put(key, map.get(key) + 1);
+            }
+        }
+        Iterator<Integer> it = map.values().iterator();
+        //°ªÀÌ ÀÖÀ¸¸é while¹® ½ÇÇà
+        while(it.hasNext()) {
+            answer *= it.next().intValue()+1;
+            //ÀüÃ¼ °æ¿ìÀÇ ¼ö
+        }
+        
+        //¾Æ¹«°Íµµ ÀÔÁö ¾Ê¾ÒÀ» ¶§ : ÀüºÎ 0 > »©ÁØ´Ù
+        //ÃÖ¼Ò 1°³´Â ÀÔ¾î¾ßÇÏ¹Ç·Î
+        //ÀüÃ¼ °æ¿ìÀÇ¼ö -1
+        return answer-1;
+    	
     }
 }
 
-
-/*
- * ë¬¸ì œ : https://programmers.co.kr/learn/courses/30/lessons/42578
- * ìœ„ìž¥ level 2
- * */
