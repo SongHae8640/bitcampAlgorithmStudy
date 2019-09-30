@@ -1,0 +1,94 @@
+class Solution {
+    public int[] solution(int[] answers) {
+        int[] answer = {};
+        
+        int[] stu1 = {1,2,3,4,5};
+        int[] stu2 = {2,1,2,3,2,4,2,5};
+        int[] stu3 = {3,3,1,1,2,2,4,4,5,5};
+        
+        int[] corr = {0,0,0};
+        
+        int cnt1=0; //stu1 반복 카운트
+        int cnt2=0; //stu2 반복 카운트
+        int cnt3=0; //stu3 반복 카운트
+        
+        for(int i=1;i<=answers.length;i++){
+            
+            //stu1 정답
+            if(stu1[cnt1]==answers[i-1])corr[0]++;
+            
+            //stu2 정답
+            if(stu2[cnt2]==answers[i-1])corr[1]++;
+            
+            //stu3 정답
+            if(stu3[cnt3]==answers[i-1])corr[2]++;
+            
+            //stu1 반복조건
+            if(i>5){
+                if(i%5==0){
+                    cnt1=0;
+                }else{
+                    cnt1++;
+                }                             
+            }else{
+                cnt1++;
+            }
+            
+           //stu1 반복조건
+            if(i>8){
+                if(i%8==0){
+                    cnt2=0;
+                }else{
+                    cnt2++;
+                }
+            }else{
+                cnt2++;
+            }
+            //stu3 반복조건
+            if(i>10){
+                if(i%10==0){
+                    cnt3=0;
+                }else{
+                    cnt3++;
+                }
+            }else{
+                cnt3++;
+            }                             
+        }
+        
+        int[] stuOrd={1,2,3};
+        
+        for(int i=0;i<corr.length-1;i++){
+            for(int j=i+1;j<corr.length;j++){
+                if(corr[i]<corr[j]){
+                    int temp=corr[j];
+                    corr[j]=corr[i];
+                    corr[i]=temp;
+                    
+                    temp=stuOrd[j];
+                    stuOrd[j]=stuOrd[i];
+                    stuOrd[i]=temp;
+                }
+            }
+        }
+            if(corr[0]!=corr[1]){
+                answer=new int[1];
+                answer[0]=stuOrd[0];
+            }else{
+                if(corr[1]!=corr[2]){
+                    answer=new int[2];
+                    answer[0]=stuOrd[0];
+                    answer[1]=stuOrd[1];
+                }else{
+                    answer=new int[3];
+                    answer[0]=stuOrd[0];
+                    answer[1]=stuOrd[1];
+                    answer[2]=stuOrd[2];
+                }
+            }
+        
+        
+        
+        return answer;
+    }
+}
