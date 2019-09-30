@@ -1,6 +1,5 @@
 import java.util.*;
 
-
 class Solution {
 
     public int solution(String[][] clothes) {
@@ -16,9 +15,9 @@ class Solution {
             }
         }
         
-        for(int i=0;i<map.size();i++){
-            answer*=map.get(i);
-        }
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+			answer *= (entry.getValue()+1);
+		}
         
         return answer-1;
 
