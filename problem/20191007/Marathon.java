@@ -1,11 +1,13 @@
-
+import java.util.*;
 public class Marathon {
 	
-	public static String main(String[] args) {
-		String answer = "";
+	public String solution(String[] participant, String[] completion) {
+        String answer = "";
+        
         return answer;
+        
+    }
 
-	}
 	
 }
 
