@@ -40,10 +40,6 @@ class Solution {
                     if(cnt == bWord.length-1) {
                         answer++;
                         return answer;
-                    } else {
-                        if(i == words.length-1) {
-                            return 0;
-                        }
                     }
                 }
 
