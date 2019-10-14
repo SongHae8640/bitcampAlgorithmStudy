@@ -1,0 +1,75 @@
+package wordChange;
+
+public class WordChange {
+
+	public static void main(String[] args) {
+		Solution sol = new Solution();
+		String begin="hit";
+		String target="cog";
+		String[] words = {"hot", "dot", "dog", "lot", "log", "cog"};
+		int result=sol.solution(begin, target, words);
+		System.out.println(result);
+	}
+
+}
+
+
+class Solution {
+    public int solution(String begin, String target, String[] words) {
+        int answer = 0;
+        int count = 0;
+        String[] tWord = target.split("");
+
+        for(int i=0; i<words.length; i++) {
+            if(target.equals(words[i])) {
+                count = 1;
+            }
+        }
+
+        if(count == 1) {
+            for(int i=0; i<words.length; i++) {
+                String[] bWord = begin.split("");
+                String[] word = words[i].split("");
+                int cnt = 0;
+
+                for(int j=0; j<bWord.length; j++) {
+                    if(bWord[j].equals(tWord[j])) {
+                        cnt++;
+                    }
+
+                    if(cnt == bWord.length-1) {
+                        answer++;
+                        return answer;
+                    } else {
+                        if(i == words.length-1) {
+                            return 0;
+                        }
+                    }
+                }
+
+                cnt = 0;
+
+                for(int k=0; k<bWord.length; k++) {
+                    if(bWord[k].equals(word[k])) {
+                        cnt++;
+                    }
+
+                    if(cnt == bWord.length-1) {
+                        answer++;
+                        begin = words[i];
+                        break;
+                    }
+                }
+            }
+        }
+        return answer;
+    }
+}
+
+----------------------------------------------------
+
+테스트 1 〉	통과 (1.03ms, 52.3MB)
+테스트 2 〉	통과 (1.27ms, 52.4MB)
+테스트 3 〉	통과 (1.80ms, 50.2MB)
+테스트 4 〉	통과 (1.12ms, 52.3MB)
+테스트 5 〉	통과 (1.14ms, 52.5MB)
