@@ -16,7 +16,7 @@ class StrangeWord{
          //t,r,y, ,h,e,l,l,o, ,w,o,r,l,d(공백포함)
          int cnt=0;
          for(int i=0;i<word.length;i++){
-             if(word[i]==" "){
+             if(word[i].equals(" ")){
                  cnt=0;
              }else{
                  cnt+=1;
