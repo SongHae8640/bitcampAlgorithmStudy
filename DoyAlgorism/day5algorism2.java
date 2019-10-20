@@ -3,6 +3,7 @@ package DoyAlgorism;
 public class day5algorism2 {
 
 	static boolean[][] link;
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int answer = 0;
@@ -33,6 +34,7 @@ public class day5algorism2 {
 				dfs(computers, i, n);
 			}
 		}
+		
 	}
 
 }

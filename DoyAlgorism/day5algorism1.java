@@ -35,25 +35,28 @@ public class day5algorism1 {
 		}
 		System.out.println(answer);
 	}
+	
+	//속도 가장 빠름
+//	String[] word = s.split("");
+//    //t,r,y, ,h,e,l,l,o, ,w,o,r,l,d(°ø¹éÆ÷ÇÔ)
+//    int cnt=0;
+//    
+//    for(int i=0;i<word.length;i++){
+//        if(word[i].equals(" ")){
+//            cnt=0;
+//        }else{
+//            cnt+=1;
+//        }
+//        
+//        if(cnt%2==0){
+//            word[i] = word[i].replace(word[i],word[i].toLowerCase());
+//        }else{
+//            word[i] = word[i].replace(word[i],word[i].toUpperCase());
+//        }
+//        answer += word[i];
+//    }
+//    System.out.println(answer);
 
-	// 오답
-	// String[] t = s.split("");
-	// for (int i = 0; i < t.length; i++) {
-	// System.out.println(t[i]);
-	//
-	// if (i % 2 == 0) {
-	// t[i] = t[i].toUpperCase();
-	// System.out.println(t[i]);
-	// answer += t[i];
-	// } else {
-	// t[i] = t[i].toLowerCase();
-	// System.out.println(t[i]);
-	// answer += t[i];
-	// }
-	// if (i == t.length - 1) {
-	//// answer += " ";
-	// }
-	// }
 
 	/*
 	 * lv1 https://programmers.co.kr/learn/courses/30/lessons/12930
