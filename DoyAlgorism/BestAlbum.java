@@ -11,8 +11,8 @@ public class BestAlbum {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String[] genres = { "classic", "pop", "classic", "classic", "pop", "jazz" };
-		int[] plays = { 500, 600, 150, 800, 2500, 2000 };
+		String[] genres = { "classic", "pop", "classic", "classic", "pop", "jazz" ,"kpop"};
+		int[] plays = { 500, 600, 150, 800, 2500, 2000, 1600 };
 		solution(genres, plays);
 
 	}
@@ -21,8 +21,10 @@ public class BestAlbum {
 		
 		//재생횟수 많은 순으로 나열
 		Map<String, Integer> map = new HashMap<String, Integer>();
+		
 		//장르 가장 많이 들은 순으로 나열
 		Map<String, Integer> rmap = new HashMap<String, Integer>();
+		
 		//int 배열에 저장하기 위한 list
 		List<String> list=new ArrayList<String>();
 		
@@ -63,6 +65,7 @@ public class BestAlbum {
 		}
 
 		List<String> keySetList = new ArrayList<>(map.keySet());
+		
 		// 내림차순 //
 		Collections.sort(keySetList, new Comparator<String>() {
 			@Override
