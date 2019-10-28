@@ -12,6 +12,7 @@ public class SkillTree2 {
 	public static int solution(String skill, String[] skill_trees) {
 		// 결과
         int answer = 0;
+<<<<<<< HEAD
         
        
         for (int i = 0; i < skill_trees.length; i++) {
@@ -42,6 +43,19 @@ public class SkillTree2 {
 			
 			if(isFitOrder) answer++;        	
 		}
+=======
+        for(int i=0; i<skill_trees.length; i++)
+        {
+            String temp= "";
+            for(int j=0; j<skill_trees[i].length(); j++)
+            {
+                if(skill.contains(""+ skill_trees[i].charAt(j)))
+                    temp+=skill_trees[i].charAt(j);
+            }
+            if(skill.startsWith(temp)) //접두사 확인 메소드
+                answer++;
+        }
+>>>>>>> master
 
         return answer;
     }
