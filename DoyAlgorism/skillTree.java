@@ -9,12 +9,14 @@ public class skillTree {
 
 		int answer = 0;
 		int treeLength = skill_trees.length;
+		
 		for (int i = 0; i < treeLength; i++) {
 			int skillIndex = 0;
 			boolean flag = true;
 
 			// skilltree 의 길이만큼 검사
 			int treeIdxLength = skill_trees[i].length();
+			
 			for (int j = 0; j < treeIdxLength; j++) {
 
 				// skill길이 만큼 검사
@@ -23,6 +25,7 @@ public class skillTree {
 				// 스킬인덱스 원소로 스킬트리 인덱스 첫번째거 검사
 				for (int k = skillIndex; k < skillLength; k++) {
 					System.out.println(skill.charAt(k) + "vs" + skill_trees[i].charAt(j));
+					
 					if (skill.charAt(k) == skill_trees[i].charAt(j)) {
 						// 스킬인덱스와 k번째가 같은지 검사 스킬의 인덱스가 스킬트리 인덱스보다 크면안됌
 						if (k > skillIndex) {
