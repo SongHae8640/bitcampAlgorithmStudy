@@ -1,0 +1,121 @@
+package mukbang;
+
+public class Mukbang2 {
+
+	public static void main(String[] args) {
+		int[] food_times={3, 1, 2};
+		long k=5;
+//		int[] food_times={3,1,1,1,2,4,3};
+//		long k=12;
+//		int[] food_times={4, 3, 5, 6, 2};
+//		long k=7;
+		Solution2 sol=new Solution2();
+		int result=sol.solution(food_times, k);
+		System.out.println(result);
+	}
+
+}
+
+class Solution2 {
+	
+	static int round=1;
+	
+    public int solution(int[] food_times, long k) {
+    	long acc_time=0;
+    	long sum=0;
+    	
+    	return mukDef(0,food_times,acc_time,k,sum);
+    }
+    
+    int mukDef(int idx, int[] food_times, long acc_time,long k,long sum){
+    	
+    	if(idx==food_times.length)round++;
+    	
+    	if(acc_time==k){
+    		if(round>1&&sum<k){
+    			return -1;
+    		}else{
+    			return return_idx(idx,food_times)+1;
+    		}
+    	}else{
+    		if(food_times[idx]>0){
+    			if(round==1){
+    				sum+=food_times[idx];
+    			}
+        		food_times[idx]--;
+        		acc_time++;
+        	}
+        	idx++;
+        	if(idx==food_times.length)idx=0;
+        	
+        	try{
+        		return mukDef(idx,food_times,acc_time,k,sum);
+        	}catch(StackOverflowError e){
+        		return -1;
+        	}
+        	
+    	}
+    	
+    }
+    
+	int return_idx(int idx,int[] food_times){
+	    	
+	    	if(food_times[idx]==0){
+	    		if(idx+1==food_times.length){
+	    			idx=0;
+	    		}else{
+	    			idx++;
+	    		}
+	    		return return_idx(idx,food_times);
+	    	}else{
+	    		return idx;
+	    	}
+    }
+    
+}
+
+/*
+정확성  테스트
+테스트 1 〉	통과 (0.83ms, 52.7MB)
+테스트 2 〉	통과 (0.85ms, 52.2MB)
+테스트 3 〉	통과 (0.88ms, 50.2MB)
+테스트 4 〉	통과 (0.83ms, 51.2MB)
+테스트 5 〉	통과 (0.85ms, 52.3MB)
+테스트 6 〉	통과 (0.91ms, 52.1MB)
+테스트 7 〉	통과 (0.77ms, 53.8MB)
+테스트 8 〉	통과 (0.82ms, 52.3MB)
+테스트 9 〉	통과 (0.94ms, 52.3MB)
+테스트 10 〉	통과 (0.92ms, 52.4MB)
+테스트 11 〉	통과 (0.86ms, 52.1MB)
+테스트 12 〉	통과 (0.89ms, 52.4MB)
+테스트 13 〉	통과 (0.92ms, 52.3MB)
+테스트 14 〉	통과 (0.82ms, 53.2MB)
+테스트 15 〉	통과 (0.80ms, 52.3MB)
+테스트 16 〉	통과 (76.59ms, 109MB)
+테스트 17 〉	통과 (0.92ms, 52MB)
+테스트 18 〉	통과 (0.71ms, 50.8MB)
+테스트 19 〉	통과 (60.51ms, 95.9MB)
+테스트 20 〉	통과 (41.53ms, 91.3MB)
+테스트 21 〉	통과 (2.16ms, 54.8MB)
+테스트 22 〉	통과 (2.07ms, 53.8MB)
+테스트 23 〉	통과 (58.33ms, 95.5MB)
+테스트 24 〉	통과 (4.22ms, 60.1MB)
+테스트 25 〉	통과 (3.39ms, 56.2MB)
+테스트 26 〉	통과 (6.09ms, 62.7MB)
+테스트 27 〉	실패 (38.11ms, 86.3MB)
+테스트 28 〉	통과 (0.85ms, 52.2MB)
+테스트 29 〉	통과 (0.87ms, 52MB)
+테스트 30 〉	통과 (0.94ms, 50.3MB)
+테스트 31 〉	통과 (0.72ms, 52.2MB)
+테스트 32 〉	통과 (0.88ms, 52.7MB)
+
+효율성  테스트
+테스트 1 〉	실패 (32.48ms, 84.1MB)
+테스트 2 〉	실패 (31.72ms, 85.1MB)
+테스트 3 〉	실패 (34.31ms, 85.1MB)
+테스트 4 〉	실패 (32.76ms, 86.8MB)
+테스트 5 〉	실패 (30.89ms, 83.9MB)
+테스트 6 〉	실패 (34.78ms, 86.9MB)
+테스트 7 〉	실패 (33.56ms, 84.3MB)
+테스트 8 〉	실패 (33.85ms, 87.5MB)
+ */
